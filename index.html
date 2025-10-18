@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MEO対策支援｜スカイライトマーケティング</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2276f3;
+      --secondary: #26c7c7;
+      --accent: #ffe55c;
+      --text: #1f2933;
+      --bg-light: #f5fbff;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 12px 40px rgba(34, 118, 243, 0.18);
+      --shadow-card: 0 10px 30px rgba(34, 118, 243, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background: radial-gradient(circle at top right, rgba(34, 118, 243, 0.08) 0%, transparent 55%),
+                  radial-gradient(circle at 15% 85%, rgba(38, 199, 199, 0.1) 0%, transparent 50%),
+                  var(--bg-light);
+      color: var(--text);
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      padding: 110px 16px 80px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, rgba(34, 118, 243, 0.96) 0%, rgba(38, 199, 199, 0.9) 70%);
+      overflow: hidden;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      z-index: 0;
+      filter: blur(0);
+    }
+
+    header::before {
+      top: -110px;
+      left: -120px;
+    }
+
+    header::after {
+      bottom: -140px;
+      right: -120px;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      margin-bottom: 32px;
+    }
+
+    nav a {
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      transform: translateY(-3px);
+      color: var(--accent);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 3.8vw, 3.4rem);
+      font-weight: 700;
+      margin: 0 0 18px;
+      letter-spacing: 0.08em;
+    }
+
+    header p {
+      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+      opacity: 0.95;
+      margin: 0 0 42px;
+    }
+
+    .header-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .header-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 34px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: #0d2848;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .header-btn.secondary {
+      background: linear-gradient(135deg, #49b7c7, #2fbcbc);
+      color: #fff;
+    }
+
+    .header-btn:hover,
+    .header-btn:focus {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 35px rgba(34, 118, 243, 0.28);
+      background: linear-gradient(135deg, #fff, #f4f8ff);
+    }
+
+    .header-btn.secondary:hover,
+    .header-btn.secondary:focus {
+      background: linear-gradient(135deg, #35c1eb, #ffe55c);
+      color: #103b58;
+    }
+
+    main {
+      margin-top: -60px;
+    }
+
+    section {
+      padding: 70px 20px;
+    }
+
+    .section-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      border-radius: 26px;
+      box-shadow: var(--shadow-card);
+      padding: 56px 48px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+      color: var(--primary);
+      letter-spacing: 0.06em;
+      margin: 0 0 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 90px;
+      height: 4px;
+      border-radius: 999px;
+      margin: 18px auto 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .service-list,
+    .industry-list,
+    .example-list {
+      display: grid;
+      gap: 26px;
+    }
+
+    .service-list {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    .service-card {
+      position: relative;
+      padding: 34px 28px 32px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(244, 250, 255, 0.95));
+      box-shadow: 0 16px 32px rgba(34, 118, 243, 0.12);
+      border: 1px solid rgba(34, 118, 243, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34, 118, 243, 0.18) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .service-icon {
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 18px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .service-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      color: #2f4050;
+      font-size: 0.98rem;
+    }
+
+    .industry-list {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .feature-box {
+      padding: 28px 14px 24px;
+      border-radius: 20px;
+      background: linear-gradient(160deg, rgba(34, 118, 243, 0.1), rgba(38, 199, 199, 0.05));
+      border: 1px solid rgba(34, 118, 243, 0.08);
+      box-shadow: 0 8px 18px rgba(34, 118, 243, 0.16);
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-box i {
+      font-size: 2.3rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: #168f8f;
+      font-size: 1.08rem;
+    }
+
+    .feature-box:hover,
+    .feature-box:focus-within,
+    .service-card:hover,
+    .service-card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(34, 118, 243, 0.18);
+    }
+
+    .example-section {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .example-list {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .example-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(25, 183, 187, 0.12), rgba(255, 255, 255, 0.92));
+      border: 1px solid rgba(25, 183, 187, 0.22);
+      box-shadow: 0 12px 26px rgba(25, 183, 187, 0.18);
+      font-size: 0.98rem;
+      transition: transform 0.18s ease;
+    }
+
+    .example-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .example-title {
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: #19b7bb;
+      margin-bottom: 6px;
+    }
+
+    .faq-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 24px;
+    }
+
+    .faq-item {
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(235, 245, 255, 0.9));
+      border: 1px solid rgba(34, 118, 243, 0.1);
+      box-shadow: 0 10px 26px rgba(34, 118, 243, 0.14);
+    }
+
+    .faq-q {
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+
+    .faq-a {
+      color: #1f364d;
+      margin-left: 4px;
+    }
+
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(140deg, rgba(34, 118, 243, 0.12), rgba(255, 255, 255, 0.96));
+      border-radius: 24px;
+      padding: 52px 34px;
+      box-shadow: 0 18px 40px rgba(34, 118, 243, 0.2);
+    }
+
+    .cta-section .section-title {
+      color: #1383a3;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(120deg, #2289c4, #34d9c4);
+      color: #fff;
+      padding: 18px 46px;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 12px;
+      box-shadow: 0 14px 32px rgba(34, 118, 243, 0.2);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .cta-btn:hover,
+    .cta-btn:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(34, 118, 243, 0.28);
+      background: linear-gradient(120deg, #35c1eb, #ffe55c);
+      color: #124f80;
+    }
+
+    .cta-note {
+      color: #0f5f6a;
+      font-weight: 500;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 36px 20px 26px;
+      background: rgba(229, 243, 253, 0.8);
+      color: #205c6a;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      border-radius: 26px 26px 0 0;
+      margin-top: 80px;
+    }
+
+    .footer-links {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #1a8ab6;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #2289c4, #34d9c4);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.18s ease;
+    }
+
+    .footer-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    @media (max-width: 960px) {
+      .section-wrapper {
+        padding: 44px 28px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      header {
+        padding: 90px 16px 70px;
+      }
+
+      .section-wrapper {
+        padding: 38px 22px;
+        border-radius: 20px;
+      }
+
+      .cta-section {
+        padding: 46px 22px;
+      }
+
+      footer {
+        border-radius: 18px 18px 0 0;
+        margin-top: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <nav>
+        <a href="#features">選ばれる理由</a>
+        <a href="#industries">対応業種</a>
+        <a href="#examples">導入事例</a>
+        <a href="#faq">よくある質問</a>
+        <a href="/recruit/" target="_blank">採用情報</a>
+        <a href="#cta">無料相談</a>
+      </nav>
+      <h1>中小企業専門 MEO対策コンサルティング</h1>
+      <p>Googleマップ上位表示で見込み客を最短3ヶ月で2倍に。<br>実績1,300店舗超のノウハウで売上アップを実現します。</p>
+      <div class="header-btns">
+        <a class="header-btn" href="#cta"><i class="fas fa-magnifying-glass-chart"></i>無料診断を申し込む</a>
+        <a class="header-btn secondary" href="#"><i class="fas fa-file-arrow-down"></i>資料ダウンロード</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="features">
+      <div class="section-wrapper">
+        <h2 class="section-title">サービス内容</h2>
+        <div class="service-list">
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-location-arrow"></i></div>
+            <div class="service-title">GBP運用代行</div>
+            <div class="service-desc">店舗情報の最適化、投稿・写真更新、口コミ返信をワンストップで代行。ブランドに合わせたビジュアル改善も実施します。</div>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-comments"></i></div>
+            <div class="service-title">口コミ促進</div>
+            <div class="service-desc">自動リクエストシステムで高評価レビュー獲得とネガティブ管理を徹底。CSV連携で一括配信も対応可能です。</div>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="service-title">順位分析レポート</div>
+            <div class="service-desc">キーワード毎の検索順位を毎日計測し、改善策をコンサルが提案。定例会での画面共有で進捗を視覚的に確認できます。</div>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-arrow-up-right-dots"></i></div>
+            <div class="service-title">外部対策/サイテーション</div>
+            <div class="service-desc">業界ポータルやSNS連携でサイト全体の評判を底上げし上位表示率を向上。地域メディアとの連携も支援します。</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="industries">
+      <div class="section-wrapper">
+        <h2 class="section-title">対応業種</h2>
+        <div class="industry-list">
+          <div class="feature-box">
+            <i class="fas fa-spa"></i>
+            <div class="feature-title">エステ</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-clinic-medical"></i>
+            <div class="feature-title">医療</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-tools"></i>
+            <div class="feature-title">修理屋</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-bolt"></i>
+            <div class="feature-title">電気屋</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-shopping-bag"></i>
+            <div class="feature-title">小売</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-prescription-bottle-alt"></i>
+            <div class="feature-title">薬局</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-utensils"></i>
+            <div class="feature-title">飲食</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-cut"></i>
+            <div class="feature-title">理美容</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-building-user"></i>
+            <div class="feature-title">クリニック</div>
+          </div>
+          <div class="feature-box">
+            <i class="fas fa-hands-spa"></i>
+            <div class="feature-title">サロン</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="section-wrapper example-section">
+        <h2 class="section-title"><i class="fas fa-check-circle"></i> 導入事例</h2>
+        <div class="example-list">
+          <div class="example-card">
+            <div class="example-title">エステサロンA様</div>
+            マップ検索1ページ目表示、女性新規顧客が月20名増加
+          </div>
+          <div class="example-card">
+            <div class="example-title">クリニックB様</div>
+            医療業界でもクチコミ増・予約数UP！
+          </div>
+          <div class="example-card">
+            <div class="example-title">修理業C様</div>
+            地域名＋業種検索で1位キープ。問い合わせ件数も増加
+          </div>
+          <div class="example-card">
+            <div class="example-title">薬局D様</div>
+            Googleマップ経由で健康相談・来店促進に成功
+          </div>
+          <div class="example-card">
+            <div class="example-title">飲食店E様</div>
+            「居酒屋＋地域名」で上位表示。団体予約や新規来店が大幅UP
+          </div>
+          <div class="example-card">
+            <div class="example-title">美容室F様</div>
+            口コミ評価★4.8達成！Google経由の新規顧客が毎月15名増加
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-wrapper">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i> よくある質問</h2>
+        <ul class="faq-list">
+          <li class="faq-item">
+            <div class="faq-q">Q. 遠方でも依頼できますか？</div>
+            <div class="faq-a">全国対応しています。Zoom等オンライン打合せもOKです。</div>
+          </li>
+          <li class="faq-item">
+            <div class="faq-q">Q. 他社サービスからの乗り換えも可能ですか？</div>
+            <div class="faq-a">可能です。現状分析から最適な移行・運用プランもご提案します。</div>
+          </li>
+          <li class="faq-item">
+            <div class="faq-q">Q. 自分で運用したい場合のサポートは？</div>
+            <div class="faq-a">アドバイスのみのプランや、運用代行の併用もご用意しています。</div>
+          </li>
+          <li class="faq-item">
+            <div class="faq-q">Q. どの業種でも相談できますか？</div>
+            <div class="faq-a">はい。幅広い業種・地域の集客実績がございます。お気軽にご相談ください。</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cta">
+      <div class="section-wrapper cta-section">
+        <h2 class="section-title"><i class="fas fa-envelope-open"></i> まずは無料相談・資料請求！</h2>
+        <a class="cta-btn" href="mailto:info@skylightmarketing.co.jp"><i class="fas fa-paper-plane"></i>お問い合わせ・無料資料請求</a>
+        <div class="cta-note">24時間以内に担当よりご連絡いたします（休日を除く）</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/recruit/" target="_blank">採用情報</a>
+    </div>
+    © 2025 Skylight Marketing Co., Ltd. All rights reserved.
+  </footer>
+</body>
+</html>
